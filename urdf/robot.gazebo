@@ -1,28 +1,26 @@
 <?xml version="1.0"?>
 <robot>
-
+  <!-- 4 wheels drive control-->
   <gazebo>
-    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <legacyMode>false</legacyMode>
-      <alwaysOn>true</alwaysOn>
-      <updateRate>10</updateRate>
-      <leftJoint>left_wheel_hinge</leftJoint>
-      <rightJoint>right_wheel_hinge</rightJoint>
-      <wheelSeparation>0.4</wheelSeparation>
-      <wheelDiameter>0.2</wheelDiameter>
-      <torque>10</torque>
+    <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+      <updateRate>100.0</updateRate>
+      <robotNamespace>/</robotNamespace>
+      <leftFrontJoint>left_wheel_front_hinge</leftFrontJoint>
+      <rightFrontJoint>right_wheel_front_hinge</rightFrontJoint>
+      <leftRearJoint>left_wheel_back_hinge</leftRearJoint>
+      <rightRearJoint>right_wheel_back_hinge</rightRearJoint>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>robot_footprint</robotBaseFrame>
-      <publishWheelTF>false</publishWheelTF>
-      <publishWheelJointState>false</publishWheelJointState>
-      <rosDebugLevel>na</rosDebugLevel>
-      <wheelAcceleration>0</wheelAcceleration>
-      <wheelTorque>5</wheelTorque>
-      <odometrySource>world</odometrySource>
-      <publishTf>1</publishTf>
-      <publishOdomTF>true</publishOdomTF>
+      <covariance_x>0.0001</covariance_x>
+      <covariance_y>0.0001</covariance_y>
+      <covariance_yaw>0.0001</covariance_yaw>
+      <wheelSeparation>0.4</wheelSeparation>
+      <wheelDiameter>0.215</wheelDiameter>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <torque>20</torque>
+      <topicName>cmd_vel</topicName>
+      <broadcastTF>false</broadcastTF>
     </plugin>
   </gazebo>
 
@@ -97,24 +95,15 @@
   </gazebo>
 
   <!-- IMU: http://gazebosim.org/tutorials?tut=ros_gzplugins -->
-  <gazebo reference="imu_link">
-    <gravity>true</gravity>
-    <sensor name="imu_sensor" type="imu">
-      <always_on>true</always_on>
-      <update_rate>100</update_rate>
-      <visualize>true</visualize>
-      <topic>__default_topic__</topic>
-      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-        <topicName>imu</topicName>
-        <bodyName>imu_link</bodyName>
-        <updateRateHZ>1.0</updateRateHZ>
-        <gaussianNoise>0.0</gaussianNoise>
-        <xyzOffset>0 0 0</xyzOffset>
-        <rpyOffset>0 0 0</rpyOffset>
-        <frameName>imu_link</frameName>
-      </plugin>
-      <pose>0 0 0 0 0 0</pose>
-    </sensor>
+  <gazebo>
+    <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+      <alwaysOn>true</alwaysOn>
+      <bodyName>imu_link</bodyName>
+      <topicName>imu</topicName>
+      <serviceName>imu_service</serviceName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <updateRate>20.0</updateRate>
+    </plugin>
   </gazebo>
 
 </robot>

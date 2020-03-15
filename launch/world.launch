@@ -24,9 +24,6 @@
     <arg name="world_name" value="$(arg world_file)"/>
   </include>
 
-  <!-- Find my robot Description-->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find gazebo_simulation)/urdf/robot.xacro'"/>
-
   <!-- Spawn My Robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
         args="-urdf -param robot_description -model gazebo_simulation 
@@ -35,4 +32,5 @@
 
   <!--launch rviz-->
   <node name="rviz" pkg="rviz" type="rviz" respawn="false"/>
+
 </launch>
