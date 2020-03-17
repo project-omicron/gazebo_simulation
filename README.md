@@ -9,7 +9,7 @@ The robot is equipted with a stereo camera, 2D lidar and can provide wheels odom
 ```
 sudo apt install ros-melodic-teleop-twist-keyboard
 sudo apt install ros-melodic-joint-state
-sudo apt install ros-melodic-dynamic-robot-state-publisher-publisher
+sudo apt install ros-melodic-dynamic-robot-state-publisher
 sudo apt install ros-melodic-xacro
 ```
 
