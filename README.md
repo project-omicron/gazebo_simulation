@@ -21,7 +21,7 @@ git clone https://github.com/project-omicron/gazebo_simulation.git
 cd ../
 catkin_make
 source devel/setup.bash
-roslauch gazebo_simulation world.launch
+roslaunch gazebo_simulation world.launch
 ```
 
 Currently we have an empty world.
