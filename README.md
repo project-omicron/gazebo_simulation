@@ -18,7 +18,7 @@ sudo apt install ros-melodic-theora-image-transport
 sudo apt install ros-melodic-camera-info-manager
 ```
 
-## Ho to use
+## How to use
 
 Currently our repository depends on other git repository.
 So make sure that in your catkin workspace has the following package: 
