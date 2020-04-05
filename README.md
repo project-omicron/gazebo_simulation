@@ -12,6 +12,8 @@ sudo apt install ros-melodic-teleop-twist-keyboard
 sudo apt install ros-melodic-joint-state-publisher
 sudo apt install ros-melodic-dynamic-robot-state-publisher
 sudo apt install ros-melodic-xacro
+sudo apt install ros-melodic-compressed-image-transport
+sudo apt install ros-melodic-theora-image-transport
 ```
 
 ## Ho to use:
