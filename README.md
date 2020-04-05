@@ -16,9 +16,14 @@ sudo apt install ros-melodic-xacro
 
 ## Ho to use:
 
+Currently our repositoy depends on other git repository.
+So make sure that in your catkin workspace has the following packsge: 
+realsense_gazebo_plugin 
+
 ```
 mkdir -p ~/catkin_ws/src && cd ~/catkin_ws/src
 git clone https://github.com/project-omicron/gazebo_simulation.git
+git clone https://github.com/SyrianSpock/realsense_gazebo_plugin.git
 cd ../
 catkin_make
 source devel/setup.bash
