@@ -20,6 +20,11 @@ sudo apt install ros-melodic-camera-info-manager
 
 ## How to use
 
+To give gazebo ability to find our models, substitute your_catkin_ws_path with real value and add the resulting line to .bashrc:
+```
+export GAZEBO_MODEL_PATH=your_catkin_ws_path/src/gazebo_simulation/models:$GAZEBO_MODEL_PATH
+``` 
+
 Currently our repository depends on other git repository.
 So make sure that in your catkin workspace has the following package: 
 realsense_gazebo_plugin 
@@ -31,10 +36,22 @@ git clone https://github.com/SyrianSpock/realsense_gazebo_plugin.git
 cd ../
 catkin_make
 source devel/setup.bash
+```
+
+To launch an empty world, use command
+```
 roslaunch gazebo_simulation world.launch
 ```
 
-Currently we have an empty world.
+Alternatively to launch the world only with linoleum tiles on arena, use command
+```
+roslaunch gazebo_simulation world_of_arena.launch
+```
+
+Or to launch the world with linoleum tiles and labyrinth, use command
+```
+roslaunch gazebo_simulation world_of_labyrinth.launch
+``` 
 
 ## How to run the robot in the simulated environment
 
