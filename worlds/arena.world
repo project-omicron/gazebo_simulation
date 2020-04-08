@@ -1,0 +1,2468 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <gui fullscreen='0'>
+      <camera name='world_camera'>
+        <pose frame=''>15.6838 -3.91228 5.45685 -0 0.569798 2.41604</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='gazebo_simulation'>
+      <link name='robot_footprint'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0.000818 0 0.000299 0 -0 0</pose>
+          <mass>15.0626</mass>
+          <inertia>
+            <ixx>0.100529</ixx>
+            <ixy>0</ixy>
+            <ixz>-0.000858522</ixz>
+            <iyy>0.102794</iyy>
+            <iyz>0</iyz>
+            <izz>0.102643</izz>
+          </inertia>
+        </inertial>
+        <collision name='robot_footprint_fixed_joint_lump__collision_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.4 0.2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='robot_footprint_fixed_joint_lump__hokuyo_collision_collision_1'>
+          <pose frame=''>0.15 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='robot_footprint_fixed_joint_lump__imu_link_collision_2'>
+          <pose frame=''>0 0 0.19 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.001 0.001 0.001</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='robot_footprint_fixed_joint_lump__rs200_camera_collision_3'>
+          <pose frame=''>0.2 0 0.07 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.0078 0.13 0.0192</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='robot_footprint_fixed_joint_lump__chassis_visual_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.4 0.2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='robot_footprint_fixed_joint_lump__hokuyo_visual_visual_1'>
+          <pose frame=''>0.15 0 0.1 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/dmitry/catkin_ws/src/gazebo_simulation/meshes/hokuyo.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>__default__</uri>
+              <name>__default__</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='robot_footprint_fixed_joint_lump__imu_link_visual_2'>
+          <pose frame=''>0 0 0.19 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.001 0.001 0.001</size>
+            </box>
+          </geometry>
+        </visual>
+        <visual name='robot_footprint_fixed_joint_lump__rs200_camera_visual_3'>
+          <pose frame=''>0.2 0 0.07 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/dmitry/catkin_ws/src/gazebo_simulation/meshes/realsense.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>__default__</uri>
+              <name>__default__</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <velocity_decay/>
+        <sensor name='head_hokuyo_sensor' type='ray'>
+          <visualize>0</visualize>
+          <update_rate>40</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>720</samples>
+                <resolution>1</resolution>
+                <min_angle>-1.5708</min_angle>
+                <max_angle>1.5708</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>30</max>
+              <resolution>0.01</resolution>
+            </range>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.01</stddev>
+            </noise>
+          </ray>
+          <plugin name='gazebo_ros_head_hokuyo_controller' filename='libgazebo_ros_laser.so'>
+            <topicName>/scan</topicName>
+            <frameName>hokuyo</frameName>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose frame=''>0.15 0 0.1 0 -0 0</pose>
+        </sensor>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <sensor name='color' type='camera'>
+          <camera name='rs200_camera'>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>RGB_INT8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.007</stddev>
+            </noise>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>60</update_rate>
+          <visualize>1</visualize>
+          <pose frame=''>0.2 0 0.07 0 -0 0</pose>
+        </sensor>
+        <sensor name='ired1' type='camera'>
+          <camera name='rs200_camera'>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>L_INT8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.05</stddev>
+            </noise>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>60</update_rate>
+          <visualize>0</visualize>
+          <pose frame=''>0.2 0 0.07 0 -0 0</pose>
+        </sensor>
+        <sensor name='ired2' type='camera'>
+          <camera name='rs200_camera'>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>L_INT8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.05</stddev>
+            </noise>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>60</update_rate>
+          <visualize>0</visualize>
+          <pose frame=''>0.2 0 0.07 0 -0 0</pose>
+        </sensor>
+        <sensor name='depth' type='depth'>
+          <camera name='rs200_camera'>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.1</stddev>
+            </noise>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>60</update_rate>
+          <visualize>0</visualize>
+          <pose frame=''>0.2 0 0.07 0 -0 0</pose>
+        </sensor>
+      </link>
+      <link name='left_wheel_back'>
+        <pose frame=''>-0.15 0.15 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 -0 1.5707 1.5707</pose>
+          <mass>5</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1</iyy>
+            <iyz>0</iyz>
+            <izz>0.1</izz>
+          </inertia>
+        </inertial>
+        <collision name='left_wheel_back_collision_collision'>
+          <pose frame=''>0 0 0 3.14159 1.57079 -1.57089</pose>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.1</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='left_wheel_back_visual_visual'>
+          <pose frame=''>0 0 0 3.14159 1.57079 -1.57089</pose>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.1</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_wheel_back_hinge' type='revolute'>
+        <child>left_wheel_back</child>
+        <parent>robot_footprint</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='left_wheel_front'>
+        <pose frame=''>0.15 0.15 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 -0 1.5707 1.5707</pose>
+          <mass>5</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1</iyy>
+            <iyz>0</iyz>
+            <izz>0.1</izz>
+          </inertia>
+        </inertial>
+        <collision name='left_wheel_front_collision_collision'>
+          <pose frame=''>0 0 0 3.14159 1.57079 -1.57089</pose>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.1</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='left_wheel_front_visual_visual'>
+          <pose frame=''>0 0 0 3.14159 1.57079 -1.57089</pose>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.1</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_wheel_front_hinge' type='revolute'>
+        <child>left_wheel_front</child>
+        <parent>robot_footprint</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='right_wheel_back'>
+        <pose frame=''>-0.15 -0.15 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 -0 1.5707 1.5707</pose>
+          <mass>5</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1</iyy>
+            <iyz>0</iyz>
+            <izz>0.1</izz>
+          </inertia>
+        </inertial>
+        <collision name='right_wheel_back_collision_collision'>
+          <pose frame=''>0 0 0 3.14159 1.57079 -1.57089</pose>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.1</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='right_wheel_back_visual_visual'>
+          <pose frame=''>0 0 0 3.14159 1.57079 -1.57089</pose>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.1</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_wheel_back_hinge' type='revolute'>
+        <child>right_wheel_back</child>
+        <parent>robot_footprint</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='right_wheel_front'>
+        <pose frame=''>0.15 -0.15 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 -0 1.5707 1.5707</pose>
+          <mass>5</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1</iyy>
+            <iyz>0</iyz>
+            <izz>0.1</izz>
+          </inertia>
+        </inertial>
+        <collision name='right_wheel_front_collision_collision'>
+          <pose frame=''>0 0 0 3.14159 1.57079 -1.57089</pose>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.1</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='right_wheel_front_visual_visual'>
+          <pose frame=''>0 0 0 3.14159 1.57079 -1.57089</pose>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.1</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_wheel_front_hinge' type='revolute'>
+        <child>right_wheel_front</child>
+        <parent>robot_footprint</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <plugin name='skid_steer_drive_controller' filename='libgazebo_ros_skid_steer_drive.so'>
+        <updateRate>100.0</updateRate>
+        <robotNamespace>/</robotNamespace>
+        <leftFrontJoint>left_wheel_front_hinge</leftFrontJoint>
+        <rightFrontJoint>right_wheel_front_hinge</rightFrontJoint>
+        <leftRearJoint>left_wheel_back_hinge</leftRearJoint>
+        <rightRearJoint>right_wheel_back_hinge</rightRearJoint>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <covariance_x>0.0001</covariance_x>
+        <covariance_y>0.0001</covariance_y>
+        <covariance_yaw>0.0001</covariance_yaw>
+        <wheelSeparation>0.4</wheelSeparation>
+        <wheelDiameter>0.215</wheelDiameter>
+        <robotBaseFrame>base_link</robotBaseFrame>
+        <torque>20</torque>
+        <topicName>cmd_vel</topicName>
+        <broadcastTF>0</broadcastTF>
+      </plugin>
+      <plugin name='imu_plugin' filename='libgazebo_ros_imu.so'>
+        <alwaysOn>1</alwaysOn>
+        <topicName>imu</topicName>
+        <serviceName>imu_service</serviceName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <updateRate>20.0</updateRate>
+        <robotNamespace>/</robotNamespace>
+        <bodyName>robot_footprint</bodyName>
+        <xyzOffset>0 0 -0.19</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <static>0</static>
+      <plugin name='r200' filename='librealsense_gazebo_plugin.so'>
+        <prefix/>
+        <robotNamespace>/</robotNamespace>
+      </plugin>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>1561 772000000</sim_time>
+      <real_time>33 539140581</real_time>
+      <wall_time>1586376676 862103931</wall_time>
+      <iterations>32370</iterations>
+      <model name='gazebo_simulation'>
+        <pose frame=''>0.017852 0.002609 0.200005 0.001038 -0.000957 -0.079019</pose>
+        <scale>1 1 1</scale>
+        <link name='left_wheel_back'>
+          <pose frame=''>-0.119835 0.163977 0.200021 0.001209 -0.560711 -0.079652</pose>
+          <velocity>-0.003118 -0.005196 0.0073 0.074244 -0.015087 0.000211</velocity>
+          <acceleration>1.1235 -1.56188 27.9265 -1.18061 -0.414119 -2.32635</acceleration>
+          <wrench>5.61749 -7.8094 139.632 0 -0 0</wrench>
+        </link>
+        <link name='left_wheel_front'>
+          <pose frame=''>0.179223 0.1403 0.200304 0.001151 0.446312 -0.078521</pose>
+          <velocity>-0.00367 -0.004375 0.008354 0.079043 -0.012683 0.00075</velocity>
+          <acceleration>-0.092477 -0.168023 5.63159 3.04483 0.398989 0.06442</acceleration>
+          <wrench>-0.462387 -0.840115 28.1579 0 -0 0</wrench>
+        </link>
+        <link name='right_wheel_back'>
+          <pose frame=''>-0.143521 -0.135083 0.199706 0.00106 -0.181465 -0.079207</pose>
+          <velocity>-0.003537 -0.004484 -0.017526 0.079479 -0.012784 1.6e-05</velocity>
+          <acceleration>-0.146124 -0.095857 6.16831 -1.87886 1.14613 -0.346643</acceleration>
+          <wrench>-0.730622 -0.479286 30.8416 0 -0 0</wrench>
+        </link>
+        <link name='right_wheel_front'>
+          <pose frame=''>0.155542 -0.15876 0.199991 0.001055 0.051209 -0.078964</pose>
+          <velocity>-0.00293 -0.005372 -0.015809 0.075157 -0.010948 0.001424</velocity>
+          <acceleration>0.491134 -1.06947 -15.4847 0.547293 0.830397 0.620303</acceleration>
+          <wrench>2.45567 -5.34736 -77.4236 0 -0 0</wrench>
+        </link>
+        <link name='robot_footprint'>
+          <pose frame=''>0.017852 0.002609 0.200005 0.001038 -0.000957 -0.079019</pose>
+          <velocity>-0.003649 -0.004451 -0.004609 0.078518 -0.012956 0.000886</velocity>
+          <acceleration>-0.13888 -0.151135 5.79222 1.45281 -1.05769 0.170797</acceleration>
+          <wrench>-2.09189 -2.27649 87.2459 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane'>
+        <pose frame=''>6.99241 8.99517 0.05 0 -0 0.001969</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.99241 8.99517 0.05 0 -0 0.001969</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>1e-06 1e-06 -0 -2e-05 1.9e-05 0</acceleration>
+          <wrench>1e-06 1e-06 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_0'>
+        <pose frame=''>8.99532 8.98934 0.05 0 -0 0.001497</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>8.99532 8.98934 0.05 0 -0 0.001497</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>1e-06 1e-06 0 -2e-05 1.9e-05 0</acceleration>
+          <wrench>1e-06 1e-06 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_1'>
+        <pose frame=''>4.9912 8.98649 0.05 0 -0 0.002914</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.9912 8.98649 0.05 0 -0 0.002914</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>1e-06 1e-06 -0 -2e-05 1.9e-05 0</acceleration>
+          <wrench>1e-06 1e-06 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_10'>
+        <pose frame=''>-1.02062 3.00721 0.05 0 0 -0.007942</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-1.02062 3.00721 0.05 0 0 -0.007942</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.003067 -0.000818 -0.036002 0.020835 -0.022661 7.6e-05</acceleration>
+          <wrench>-0.003067 -0.000818 -0.036002 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_11'>
+        <pose frame=''>2.98557 4.98209 0.050225 -0.00031 0.000274 -0.00544</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.98557 4.98209 0.050225 -0.00031 0.000274 -0.00544</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>2.16338 3.43234 -9.71239 0.082482 -0.019446 -1.2749</acceleration>
+          <wrench>2.16338 3.43234 -9.71239 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_12'>
+        <pose frame=''>4.9874 4.97161 0.05034 4e-05 0.000153 -0.002899</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.9874 4.97161 0.05034 4e-05 0.000153 -0.002899</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-3.51406 6.89384 -3.03542 -0.155133 -0.283338 -2.93577</acceleration>
+          <wrench>-3.51406 6.89384 -3.03542 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_13'>
+        <pose frame=''>6.9887 4.98551 0.049993 6.9e-05 9.1e-05 -0.001835</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.9887 4.98551 0.049993 6.9e-05 9.1e-05 -0.001835</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.066066 0.065818 -9.73407 0.061492 0.069127 -0.130623</acceleration>
+          <wrench>0.066066 0.065818 -9.73407 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_14'>
+        <pose frame=''>8.9892 4.98463 0.05 0 0 -0.000997</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>8.9892 4.98463 0.05 0 0 -0.000997</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>1e-06 1e-06 0 -1.9e-05 2e-05 0</acceleration>
+          <wrench>1e-06 1e-06 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_15'>
+        <pose frame=''>6.99127 2.98499 0.050089 0.000103 0.000154 -0.002188</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.99127 2.98499 0.050089 0.000103 0.000154 -0.002188</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>10.8161 0.04338 -2.38884 -3.1019 0.584068 0.169645</acceleration>
+          <wrench>10.8161 0.04338 -2.38884 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_16'>
+        <pose frame=''>4.99123 2.97086 0.050598 -0.00043 0.000168 -0.002188</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.99123 2.97086 0.050598 -0.00043 0.000168 -0.002188</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.215592 -0.297821 5.27093 -1.9126 -0.34904 0.130749</acceleration>
+          <wrench>0.215592 -0.297821 5.27093 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_17'>
+        <pose frame=''>2.99115 2.97583 0.05 0 0 -0.002111</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.99115 2.97583 0.05 0 0 -0.002111</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.017521 -0.019076 0.353209 -0.508835 0.305016 -0.028153</acceleration>
+          <wrench>0.017521 -0.019076 0.353209 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_18'>
+        <pose frame=''>0.982685 2.99208 0.04999 -4e-06 2e-06 -0.004578</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0.982685 2.99208 0.04999 -4e-06 2e-06 -0.004578</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.954582 -0.471931 -8.8417 0.939074 0.906168 -0.489175</acceleration>
+          <wrench>0.954582 -0.471931 -8.8417 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_19'>
+        <pose frame=''>8.99178 0.981595 0.05 0 0 -1.4e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>8.99178 0.981595 0.05 0 0 -1.4e-05</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_2'>
+        <pose frame=''>2.9892 8.98699 0.04996 -2.7e-05 2.2e-05 0.000238</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.9892 8.98699 0.04996 -2.7e-05 2.2e-05 0.000238</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>2.87443 6.03346 -3.75656 -0.063306 -0.097526 3.12631</acceleration>
+          <wrench>2.87443 6.03346 -3.75656 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_20'>
+        <pose frame=''>6.99082 0.983234 0.05 0 0 -0.000481</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.99082 0.983234 0.05 0 0 -0.000481</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>1e-06 1e-06 -0 -1.9e-05 2e-05 0</acceleration>
+          <wrench>1e-06 1e-06 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_21'>
+        <pose frame=''>4.9899 0.967706 0.05003 4.8e-05 5.5e-05 0.000529</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.9899 0.967706 0.05003 4.8e-05 5.5e-05 0.000529</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>10.5735 0.069915 0.37233 2.95073 -0.218824 3.12667</acceleration>
+          <wrench>10.5735 0.069915 0.37233 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_22'>
+        <pose frame=''>2.98987 0.970351 0.049995 0 -5e-06 0.000502</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.98987 0.970351 0.049995 0 -5e-06 0.000502</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.25278 -0.000416 -4.73176 0.008103 1.22759 6e-06</acceleration>
+          <wrench>-0.25278 -0.000416 -4.73176 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_23'>
+        <pose frame=''>0.989464 0.98727 0.050127 8.1e-05 -5.1e-05 0.000427</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0.989464 0.98727 0.050127 8.1e-05 -5.1e-05 0.000427</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-2.44666 -1.27916 -7.35327 -0.781898 -0.817514 -1.997</acceleration>
+          <wrench>-2.44666 -1.27916 -7.35327 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_24'>
+        <pose frame=''>0.986846 -1.02531 0.05 -2.1e-05 -2.1e-05 -0.011566</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0.986846 -1.02531 0.05 -2.1e-05 -2.1e-05 -0.011566</pose>
+          <velocity>-0.000925 0.001026 0.009984 -0.017285 -0.016834 -1.7e-05</velocity>
+          <acceleration>-2.82732 3.79401 56.6887 0.072532 1.56937 -2.79467</acceleration>
+          <wrench>-2.82732 3.79401 56.6887 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_25'>
+        <pose frame=''>-1.02943 -1.01155 0.048604 -0.00104 0.001073 -0.0019</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-1.02943 -1.01155 0.048604 -0.00104 0.001073 -0.0019</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-4.63847 10.1933 -59.4572 1.18561 -0.27114 0.403964</acceleration>
+          <wrench>-4.63847 10.1933 -59.4572 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_26'>
+        <pose frame=''>-1.03515 1.00546 0.050001 -2e-06 -1e-06 -0.009742</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-1.03515 1.00546 0.050001 -2e-06 -1e-06 -0.009742</pose>
+          <velocity>-0.000826 0.001326 0.001525 -0.00201 -0.000631 -0.00014</velocity>
+          <acceleration>-0.57634 1.32391 -3.47525 1.18068 -1.22721 3.00159</acceleration>
+          <wrench>-0.57634 1.32391 -3.47525 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_3'>
+        <pose frame=''>8.99037 2.9836 0.05 0 -0 -0.002022</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>8.99037 2.9836 0.05 0 -0 -0.002022</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 -0 0 0 -0 0</acceleration>
+          <wrench>0 -0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_4'>
+        <pose frame=''>8.99446 6.98687 0.05 0 -0 0.001245</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>8.99446 6.98687 0.05 0 -0 0.001245</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>1e-06 1e-06 0 -2e-05 1.9e-05 0</acceleration>
+          <wrench>1e-06 1e-06 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_5'>
+        <pose frame=''>6.99366 6.99157 0.050042 -5.9e-05 5.9e-05 0.00212</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.99366 6.99157 0.050042 -5.9e-05 5.9e-05 0.00212</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>1.22284 0.868008 -8.5723 -1.27364 1.28615 0.359262</acceleration>
+          <wrench>1.22284 0.868008 -8.5723 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_6'>
+        <pose frame=''>4.98999 6.98154 0.05013 6.8e-05 6.2e-05 0.005819</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.98999 6.98154 0.05013 6.8e-05 6.2e-05 0.005819</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.28894 0.29759 -1.59224 0.61791 0.368593 -0.017285</acceleration>
+          <wrench>-0.28894 0.29759 -1.59224 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='linoleum_plane_7'>
+        <pose frame=''>2.98032 6.98306 0.050065 -0.0001 2.2e-05 -0.004167</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.98032 6.98306 0.050065 -0.0001 2.2e-05 -0.004167</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>4.56353 8.77696 -6.3886 0.183317 -0.005768 -0.99867</acceleration>
+          <wrench>4.56353 8.77696 -6.3886 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <model name='linoleum_plane'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>6.95289 9.00888 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_0'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>6.75562 9.96564 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_1'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>4.98278 8.98276 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_2'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>2.95083 9.01059 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_4'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>8.97523 6.9864 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_5'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>6.95346 6.96078 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_6'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>4.96952 6.93737 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_7'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>2.95074 6.95907 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_10'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.968219 4.95457 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_11'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>3.03776 4.93862 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_12'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>5.01894 4.94892 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_13'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>7.01654 4.94631 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_14'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>9.06039 4.94916 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_3'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>8.97177 2.98541 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_15'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>6.95786 2.92857 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_16'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>4.88113 2.90635 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_17'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>2.87577 2.79562 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_18'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.925965 2.94478 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_19'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>8.96918 0.96638 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_20'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>6.9917 0.940061 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_21'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>4.9745 0.948442 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_22'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>2.88407 0.904412 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_23'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.899299 0.899464 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_24'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.999917 -1.04568 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_25'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-1.01524 -1.0371 0 0 -0 0</pose>
+    </model>
+    <model name='linoleum_plane_26'>
+      <static>0</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://linoleum_plane/materials/scripts</uri>
+              <uri>model://linoleum_plane/materials/textures</uri>
+              <name>linoleum</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-1.09957 0.994498 0 0 -0 0</pose>
+    </model>
+  </world>
+</sdf>
