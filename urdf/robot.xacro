@@ -61,14 +61,14 @@
     <collision name='collision'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/> 
       <geometry>
-        <box size=".580 .210 .110"/>
+        <box size=".580 .270 .110"/>
       </geometry>
     </collision>
 
     <visual name='chassis_visual'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
-        <box size=".580 .210 .110"/>
+        <box size=".580 .270 .110"/>
       </geometry>
     </visual>
   </link>
@@ -93,14 +93,14 @@
     <collision name='collision2'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/> 
       <geometry>
-        <box size=".370 .380 .110"/>
+        <box size=".280 .400 .110"/>
       </geometry>
     </collision>
 
     <visual name='chassis2_visual'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
-        <box size=".370 .380 .110"/>
+        <box size=".280 .400 .110"/>
       </geometry>
     </visual>
   </link>
@@ -159,20 +159,20 @@
     <collision name='left_wheel_front_collision'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
-        <cylinder length="0.076" radius="0.05"/>
+        <cylinder length="0.07" radius="0.05"/>
       </geometry>
     </collision>
 
     <visual name='left_wheel_front_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5705 1.5707"/>
       <geometry>
-        <cylinder length="0.076" radius="0.05"/>
+        <cylinder length="0.07" radius="0.05"/>
       </geometry>
     </visual>
   </link>
 
   <joint type="continuous" name="left_wheel_front_hinge">
-    <origin xyz="0.25 0.15 -0.03" rpy="0 0 0"/>
+    <origin xyz="0.2 0.18 -0.03" rpy="0 0 0"/>
     <child link="left_wheel_front"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -195,20 +195,20 @@
     <collision name='left_wheel_back_collision'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
-        <cylinder length="0.076" radius="0.05"/>
+        <cylinder length="0.07" radius="0.05"/>
       </geometry>
     </collision>
 
     <visual name='left_wheel_back_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5705 1.5707"/>
       <geometry>
-        <cylinder length="0.076" radius="0.05"/>
+        <cylinder length="0.07" radius="0.05"/>
       </geometry>
     </visual>
   </link>
 
   <joint type="continuous" name="left_wheel_back_hinge">
-    <origin xyz="-0.25 0.15 -0.03" rpy="0 0 0"/>
+    <origin xyz="-0.2 0.18 -0.03" rpy="0 0 0"/>
     <child link="left_wheel_back"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -231,20 +231,20 @@
     <collision name='right_wheel_front_collision'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
-        <cylinder length="0.076" radius="0.05"/>
+        <cylinder length="0.07" radius="0.05"/>
       </geometry>
     </collision>
 
     <visual name='right_wheel_front_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5705 1.5707"/>
       <geometry>
-        <cylinder length="0.076" radius="0.05"/>
+        <cylinder length="0.07" radius="0.05"/>
       </geometry>
     </visual>
   </link>
 
   <joint type="continuous" name="right_wheel_front_hinge">
-    <origin xyz="0.25 -0.15 -0.03" rpy="0 0 0"/>
+    <origin xyz="0.2 -0.18 -0.03" rpy="0 0 0"/>
     <child link="right_wheel_front"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -267,20 +267,20 @@
     <collision name='right_wheel_back_collision'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
-        <cylinder length="0.076" radius="0.05"/>
+        <cylinder length="0.07" radius="0.05"/>
       </geometry>
     </collision>
 
     <visual name='right_wheel_back_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5705 1.5707"/>
       <geometry>
-        <cylinder length="0.076" radius="0.05"/>
+        <cylinder length="0.07" radius="0.05"/>
       </geometry>
     </visual>
   </link>
 
   <joint type="continuous" name="right_wheel_back_hinge">
-    <origin xyz="-0.25 -0.15 -0.03" rpy="0 0 0"/>
+    <origin xyz="-0.2 -0.18 -0.03" rpy="0 0 0"/>
     <child link="right_wheel_back"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
