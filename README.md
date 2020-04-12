@@ -6,7 +6,7 @@ The robot is equipped with a stereo camera, 2D lidar and can provide wheels odom
 
 ## Dependencies
 
-```
+### Basic```
 sudo apt install ros-melodic-gazebo-ros
 sudo apt install ros-melodic-teleop-twist-keyboard
 sudo apt install ros-melodic-joint-state-publisher
@@ -16,7 +16,10 @@ sudo apt install ros-melodic-rviz
 sudo apt install ros-melodic-compressed-image-transport
 sudo apt install ros-melodic-theora-image-transport
 sudo apt install ros-melodic-camera-info-manager
-```
+
+### SLAM
+sudo apt install ros-melodic-cartographer ros-melodic-cartographer-ros ros-melodic-cartographer-rviz
+
 
 ## How to use
 
