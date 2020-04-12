@@ -16,19 +16,19 @@
   </gazebo>
 
   <gazebo reference="left_wheel_front">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Wood</material>
   </gazebo>
 
   <gazebo reference="right_wheel_front">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Wood</material>
   </gazebo>
 
   <gazebo reference="left_wheel_back">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Wood</material>
   </gazebo>
 
   <gazebo reference="right_wheel_back">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Wood</material>
   </gazebo>
 
   <!-- ROBOT description -->
