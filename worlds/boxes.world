@@ -1,0 +1,281 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.4">
+
+  <world name="default">
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- World camera -->
+    <gui fullscreen='0'>
+      <camera name='world_camera'>
+        <pose>4.927360 -4.376610 3.740080 0.000000 0.275643 2.356190</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+    <model name="box1">
+      <pose frame=''>2 2 1 0 0 0</pose>
+      <link name='box'>
+        <inertial>
+          <mass value="15.0"/>
+          <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+          <inertia
+                  ixx="0.1" ixy="0" ixz="0"
+                  iyy="0.1" iyz="0"
+                  izz="0.1"
+          />
+        </inertial>
+
+        <collision name='collision'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="1 1 1"/>
+          </geometry>
+        </collision>
+
+        <visual name='visual'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="1 1 1"/>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Bricks</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+    <model name="box2">
+      <pose frame=''>3 -2 1 0 0 0.5</pose>
+      <link name='box'>
+        <inertial>
+          <mass value="15.0"/>
+          <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+          <inertia
+                  ixx="0.1" ixy="0" ixz="0"
+                  iyy="0.1" iyz="0"
+                  izz="0.1"
+          />
+        </inertial>
+
+        <collision name='collision'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="1 1 1"/>
+          </geometry>
+        </collision>
+
+        <visual name='visual'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="1 1 1"/>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+    <model name="box3">
+      <pose frame=''>-3 -2 1 0 0 0</pose>
+      <link name='box'>
+        <inertial>
+          <mass value="15.0"/>
+          <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+          <inertia
+                  ixx="0.1" ixy="0" ixz="0"
+                  iyy="0.1" iyz="0"
+                  izz="0.1"
+          />
+        </inertial>
+
+        <collision name='collision'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="0.5 0.5 1"/>
+          </geometry>
+        </collision>
+
+        <visual name='visual'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="0.5 0.5 1"/>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box4">
+      <pose frame=''>-3 2 1 0 0 0</pose>
+      <link name='box'>
+        <inertial>
+          <mass value="15.0"/>
+          <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+          <inertia
+                  ixx="0.1" ixy="0" ixz="0"
+                  iyy="0.1" iyz="0"
+                  izz="0.1"
+          />
+        </inertial>
+
+        <collision name='collision'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="2 2 1"/>
+          </geometry>
+        </collision>
+
+        <visual name='visual'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="2 2 1"/>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="outerbox1">
+      <pose frame=''>0 10 1 0 0 0</pose>
+      <link name='box'>
+        <inertial>
+          <mass value="15.0"/>
+          <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+          <inertia
+                  ixx="0.1" ixy="0" ixz="0"
+                  iyy="0.1" iyz="0"
+                  izz="0.1"
+          />
+        </inertial>
+
+        <collision name='collision'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="2 2 1"/>
+          </geometry>
+        </collision>
+
+        <visual name='visual'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="2 2 1"/>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="outerbox2">
+      <pose frame=''>-10 0 1 0 0 0.5</pose>
+      <link name='box'>
+        <inertial>
+          <mass value="15.0"/>
+          <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+          <inertia
+                  ixx="0.1" ixy="0" ixz="0"
+                  iyy="0.1" iyz="0"
+                  izz="0.1"
+          />
+        </inertial>
+
+        <collision name='collision'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="2 2 1"/>
+          </geometry>
+        </collision>
+
+        <visual name='visual'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="2 2 1"/>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+
+    <model name="outerbox3">
+      <pose frame=''>0 -10 2 0 0 0</pose>
+      <link name='box'>
+        <inertial>
+          <mass value="15.0"/>
+          <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+          <inertia
+                  ixx="0.1" ixy="0" ixz="0"
+                  iyy="0.1" iyz="0"
+                  izz="0.1"
+          />
+        </inertial>
+
+        <collision name='collision'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="2 2 1"/>
+          </geometry>
+        </collision>
+
+        <visual name='visual'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="2 2 1"/>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="outerbox4">
+      <pose frame=''>10 0 2 0 0 0.3</pose>
+      <link name='box'>
+        <inertial>
+          <mass value="15.0"/>
+          <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+          <inertia
+                  ixx="0.1" ixy="0" ixz="0"
+                  iyy="0.1" iyz="0"
+                  izz="0.1"
+          />
+        </inertial>
+
+        <collision name='collision'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="2 2 1"/>
+          </geometry>
+        </collision>
+
+        <visual name='visual'>
+          <origin xyz="0 0 0" rpy=" 0 0 0"/>
+          <geometry>
+            <box size="2 2 1"/>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+  </world>
+</sdf>

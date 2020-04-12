@@ -46,6 +46,10 @@ To launch an empty world, use command
 roslaunch gazebo_simulation world.launch
 ```
 
+To launch any other world you can specify a parameter (use full path to the world file):
+
+    roslaunch gazebo_simulation world.launch world_file:=`rospack find gazebo_simulation`/worlds/boxes.world
+
 Alternatively to launch the world only with linoleum tiles on arena, use command
 ```
 roslaunch gazebo_simulation world_of_arena.launch
