@@ -4,11 +4,15 @@
 <xacro:include filename="$(find gazebo_simulation)/urdf/robot.gazebo" />
 
   <gazebo reference="chassis">
-    <material>Gazebo/White</material>
+    <material>Gazebo/RedBright</material>
   </gazebo>
 
-  <gazebo reference="camera">
-    <material>Gazebo/Grey</material>
+  <gazebo reference="chassis2">
+    <material>Gazebo/RedBright</material>
+  </gazebo>
+
+  <gazebo reference="robot_lidar_platform">
+    <material>Gazebo/RedBright</material>
   </gazebo>
 
   <gazebo reference="left_wheel_front">
@@ -29,6 +33,11 @@
 
   <!-- ROBOT description -->
   <link name="robot_footprint"></link>
+
+  <!--
+    KUKA youBot dimentions
+    https://www.expo21xx.com/industrial-robots/20317_st3_mobile-robot-research/default.htm
+  -->
 
   <joint name="robot_footprint_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -52,22 +61,93 @@
     <collision name='collision'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/> 
       <geometry>
-        <box size=".4 .2 .1"/>
+        <box size=".580 .210 .110"/>
       </geometry>
     </collision>
 
     <visual name='chassis_visual'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
-        <box size=".4 .2 .1"/>
+        <box size=".580 .210 .110"/>
       </geometry>
     </visual>
   </link>
 
+  <joint name="robot_footprint_joint2" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="robot_footprint"/>
+    <child link="chassis2" />
+  </joint>
+
+  <link name='chassis2'>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+      <inertia
+          ixx="0.1" ixy="0" ixz="0"
+          iyy="0.1" iyz="0"
+          izz="0.1"
+      />
+    </inertial>
+
+    <collision name='collision2'>
+      <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+      <geometry>
+        <box size=".370 .380 .110"/>
+      </geometry>
+    </collision>
+
+    <visual name='chassis2_visual'>
+      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <geometry>
+        <box size=".370 .380 .110"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="robot_lidar_platform_joint" type="fixed">
+    <origin xyz="0.32 0 -0.05" rpy="0 0 0" />
+    <parent link="robot_footprint"/>
+    <child link="robot_lidar_platform" />
+  </joint>
+
+  <link name='robot_lidar_platform'>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+      <inertia
+          ixx="0.1" ixy="0" ixz="0"
+          iyy="0.1" iyz="0"
+          izz="0.1"
+      />
+    </inertial>
+
+    <collision name='collision2'>
+      <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+      <geometry>
+        <box size=".12 .10 .01"/>
+      </geometry>
+    </collision>
+
+    <visual name='chassis2_visual'>
+      <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+      <geometry>
+        <box size=".12 .10 .01"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!--
+  Wheel: 
+    radius: 50mm
+    length: 76mm
+    mass: 500gr. 
+  -->
+
   <!-- Left wheel front -->
   <link name='left_wheel_front'>
     <inertial>
-      <mass value="5.0"/>
+      <mass value="0.5"/>
       <origin xyz="0.0 0 0" rpy=" 0 1.5707 1.5707"/>
       <inertia
           ixx="0.1" ixy="0" ixz="0"
@@ -79,20 +159,20 @@
     <collision name='left_wheel_front_collision'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
-        <cylinder length="0.05" radius="0.1"/>
+        <cylinder length="0.076" radius="0.05"/>
       </geometry>
     </collision>
 
     <visual name='left_wheel_front_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5705 1.5707"/>
       <geometry>
-        <cylinder length="0.05" radius="0.1"/>
+        <cylinder length="0.076" radius="0.05"/>
       </geometry>
     </visual>
   </link>
 
   <joint type="continuous" name="left_wheel_front_hinge">
-    <origin xyz="0.15 0.15 0" rpy="0 0 0"/>
+    <origin xyz="0.25 0.15 -0.03" rpy="0 0 0"/>
     <child link="left_wheel_front"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -103,7 +183,7 @@
   <!-- Left wheel back -->
   <link name='left_wheel_back'>
     <inertial>
-      <mass value="5.0"/>
+      <mass value="0.5"/>
       <origin xyz="0.0 0 0" rpy=" 0 1.5707 1.5707"/>
       <inertia
           ixx="0.1" ixy="0" ixz="0"
@@ -115,20 +195,20 @@
     <collision name='left_wheel_back_collision'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
-        <cylinder length="0.05" radius="0.1"/>
+        <cylinder length="0.076" radius="0.05"/>
       </geometry>
     </collision>
 
     <visual name='left_wheel_back_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5705 1.5707"/>
       <geometry>
-        <cylinder length="0.05" radius="0.1"/>
+        <cylinder length="0.076" radius="0.05"/>
       </geometry>
     </visual>
   </link>
 
   <joint type="continuous" name="left_wheel_back_hinge">
-    <origin xyz="-0.15 0.15 0" rpy="0 0 0"/>
+    <origin xyz="-0.25 0.15 -0.03" rpy="0 0 0"/>
     <child link="left_wheel_back"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -139,7 +219,7 @@
   <!-- Right wheel front -->
   <link name='right_wheel_front'>
     <inertial>
-      <mass value="5.0"/>
+      <mass value="0.5"/>
       <origin xyz="0.0 0 0" rpy=" 0 1.5707 1.5707"/>
       <inertia
           ixx="0.1" ixy="0" ixz="0"
@@ -151,20 +231,20 @@
     <collision name='right_wheel_front_collision'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
-        <cylinder length="0.05" radius="0.1"/>
+        <cylinder length="0.076" radius="0.05"/>
       </geometry>
     </collision>
 
     <visual name='right_wheel_front_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5705 1.5707"/>
       <geometry>
-        <cylinder length="0.05" radius="0.1"/>
+        <cylinder length="0.076" radius="0.05"/>
       </geometry>
     </visual>
   </link>
 
   <joint type="continuous" name="right_wheel_front_hinge">
-    <origin xyz="0.15 -0.15 0" rpy="0 0 0"/>
+    <origin xyz="0.25 -0.15 -0.03" rpy="0 0 0"/>
     <child link="right_wheel_front"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -175,7 +255,7 @@
   <!-- Right wheel back -->
   <link name='right_wheel_back'>
     <inertial>
-      <mass value="5.0"/>
+      <mass value="0.5"/>
       <origin xyz="0.0 0 0" rpy=" 0 1.5707 1.5707"/>
       <inertia
           ixx="0.1" ixy="0" ixz="0"
@@ -187,20 +267,20 @@
     <collision name='right_wheel_back_collision'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
-        <cylinder length="0.05" radius="0.1"/>
+        <cylinder length="0.076" radius="0.05"/>
       </geometry>
     </collision>
 
     <visual name='right_wheel_back_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5705 1.5707"/>
       <geometry>
-        <cylinder length="0.05" radius="0.1"/>
+        <cylinder length="0.076" radius="0.05"/>
       </geometry>
     </visual>
   </link>
 
   <joint type="continuous" name="right_wheel_back_hinge">
-    <origin xyz="-0.15 -0.15 0" rpy="0 0 0"/>
+    <origin xyz="-0.25 -0.15 -0.03" rpy="0 0 0"/>
     <child link="right_wheel_back"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -237,7 +317,7 @@
   </link>
 
   <joint type="fixed" name="hokuyo_joint">
-    <origin xyz="0.15 0 0.1" rpy="0 0 0"/>
+    <origin xyz="0.34 0 -0.0099" rpy="0 0 0"/>
     <child link="hokuyo"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -276,7 +356,7 @@
   <xacro:include filename="$(find gazebo_simulation)/urdf/realsense-RS200.macro.xacro"/>
   <!-- Create camera instance -->
   <xacro:realsense-rs200 prefix="" parent="chassis">
-    <origin xyz="0.2 0 .07" rpy="0 0 0" />
+    <origin xyz="0.285 0 .065" rpy="0 0 0" />
   </xacro:realsense-rs200>
 
 </robot>
