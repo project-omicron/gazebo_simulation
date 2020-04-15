@@ -2,28 +2,15 @@
 <robot>
   <!-- 4 wheels drive control-->
   <gazebo>
-    <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
-      <updateRate>100.0</updateRate>
-      <robotNamespace>/</robotNamespace>
-      <leftFrontJoint>left_wheel_front_hinge</leftFrontJoint>
-      <rightFrontJoint>right_wheel_front_hinge</rightFrontJoint>
-      <leftRearJoint>left_wheel_back_hinge</leftRearJoint>
-      <rightRearJoint>right_wheel_back_hinge</rightRearJoint>
+    <plugin name="omni_steering" filename="libgazebo_ros_planar_move.so">
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <covariance_x>0.0001</covariance_x>
-      <covariance_y>0.0001</covariance_y>
-      <covariance_yaw>0.0001</covariance_yaw>
-      <wheelSeparation>0.4</wheelSeparation>
-      <wheelDiameter>0.215</wheelDiameter>
+      <odometryRate>50.0</odometryRate>
       <robotBaseFrame>base_link</robotBaseFrame>
-      <torque>20</torque>
-      <topicName>cmd_vel</topicName>
-      <broadcastTF>false</broadcastTF>
+      <publishTF>true</publishTF>
     </plugin>
   </gazebo>
-
 
   <!-- hokuyo -->
   <gazebo reference="hokuyo">
