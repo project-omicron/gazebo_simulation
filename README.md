@@ -40,12 +40,7 @@ source devel/setup.bash
 
 To launch an empty world, use command
 ```
-roslaunch gazebo_simulation world.launch
-```
-
-Alternatively to launch the world only with linoleum tiles on arena, use command
-```
-roslaunch gazebo_simulation world_of_arena.launch
+roslaunch gazebo_simulation void_world.launch
 ```
 
 Or to launch the world with linoleum tiles and labyrinth, use command

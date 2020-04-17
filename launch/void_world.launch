@@ -14,7 +14,7 @@
 
   <!-- World File -->
   <!-- We can put here any world we want -->
-  <arg name="world_file" default="$(find gazebo_simulation)/worlds/empty.world"/>
+  <arg name="world_file" default="$(find gazebo_simulation)/worlds/void.world"/>
 
   <!-- Launch Gazebo World -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
