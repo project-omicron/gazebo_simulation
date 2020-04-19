@@ -4,7 +4,7 @@
   <!-- Robot pose -->
   <arg name="x" default="0"/>
   <arg name="y" default="0"/>
-  <arg name="z" default="0.25"/>
+  <arg name="z" default="0.13"/>
   <arg name="roll" default="0"/>
   <arg name="pitch" default="0"/>
   <arg name="yaw" default="0"/>
@@ -14,7 +14,7 @@
 
   <!-- World File -->
   <!-- We can put here any world we want -->
-  <arg name="world_file" default="$(find gazebo_simulation)/worlds/empty.world"/>
+  <arg name="world_file" default="$(find gazebo_simulation)/worlds/void.world"/>
 
   <!-- Launch Gazebo World -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
