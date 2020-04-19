@@ -92,7 +92,7 @@
   </link>
 
   <joint name="robot_lidar_platform_joint" type="fixed">
-    <origin xyz="0.32 0 -0.05" rpy="0 0 0" />
+    <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
     <parent link="chassis"/>
     <child link="robot_lidar_platform" />
   </joint>
@@ -111,14 +111,14 @@
     <collision name='collision2'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/> 
       <geometry>
-        <box size=".12 .10 .01"/>
+        <box size=".12 .10 .10"/>
       </geometry>
     </collision>
 
     <visual name='chassis2_visual'>
       <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
       <geometry>
-        <box size=".12 .10 .01"/>
+        <box size=".12 .10 .10"/>
       </geometry>
     </visual>
   </link>
@@ -158,7 +158,7 @@
   </link>
 
   <joint type="fixed" name="hokuyo_joint">
-    <origin xyz="0.34 0 -0.0099" rpy="0 0 0"/>
+    <origin xyz="0.0 0.0 0.15" rpy="0 0 0"/>
     <child link="hokuyo"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
