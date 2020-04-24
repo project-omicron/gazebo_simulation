@@ -16,6 +16,7 @@ sudo apt install ros-melodic-rviz
 sudo apt install ros-melodic-compressed-image-transport
 sudo apt install ros-melodic-theora-image-transport
 sudo apt install ros-melodic-camera-info-manager
+sudo apt install ros-melodic-hector-gazebo-plugins # for IMU sensor
 ```
 
 ## How to use
