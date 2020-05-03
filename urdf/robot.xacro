@@ -5,11 +5,7 @@
 <xacro:include filename="$(find gazebo_simulation)/urdf/realsense-RS200.macro.xacro"/>
 <xacro:include filename="$(find gazebo_simulation)/urdf/omni_wheel.urdf.xacro" />
 
-  <gazebo reference="chassis">
-    <material>Gazebo/RedBright</material>
-  </gazebo>
-
-  <gazebo reference="chassis2">
+  <gazebo reference="base_link">
     <material>Gazebo/RedBright</material>
   </gazebo>
 
@@ -25,13 +21,7 @@
     https://www.expo21xx.com/industrial-robots/20317_st3_mobile-robot-research/default.htm
   -->
 
-  <joint name="robot_footprint_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <parent link="robot_footprint"/>
-    <child link="chassis" />
-  </joint>
-
-  <link name='chassis'>
+  <link name='base_link'>
     <pose>0 0 0.1 0 0 0</pose>
 
     <inertial>
@@ -51,7 +41,7 @@
       </geometry>
     </collision>
 
-    <visual name='chassis_visual'>
+    <visual name='base_link_visual'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
         <box size=".580 .270 .110"/>
@@ -59,41 +49,18 @@
     </visual>
   </link>
 
-  <joint name="robot_footprint_joint2" type="fixed">
+
+  <joint name="robot_footprint_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <parent link="chassis"/>
-    <child link="chassis2" />
+    <parent link="base_link" />
+    <child link="robot_footprint"/>
   </joint>
 
-  <link name='chassis2'>
-    <inertial>
-      <mass value="1.0"/>
-      <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
-      <inertia
-          ixx="0.1" ixy="0" ixz="0"
-          iyy="0.1" iyz="0"
-          izz="0.1"
-      />
-    </inertial>
 
-    <collision name='collision2'>
-      <origin xyz="0 0 0" rpy=" 0 0 0"/> 
-      <geometry>
-        <box size=".135 .400 .110"/>
-      </geometry>
-    </collision>
-
-    <visual name='chassis2_visual'>
-      <origin xyz="0 0 0" rpy=" 0 0 0"/>
-      <geometry>
-        <box size=".135 .400 .110"/>
-      </geometry>
-    </visual>
-  </link>
 
   <joint name="robot_lidar_platform_joint" type="fixed">
     <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <child link="robot_lidar_platform" />
   </joint>
 
@@ -115,7 +82,7 @@
       </geometry>
     </collision>
 
-    <visual name='chassis2_visual'>
+    <visual>
       <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
       <geometry>
         <box size=".12 .10 .10"/>
@@ -160,7 +127,7 @@
   <joint type="fixed" name="hokuyo_joint">
     <origin xyz="0.0 0.0 0.15" rpy="0 0 0"/>
     <child link="hokuyo"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
   </joint>
 
@@ -181,8 +148,8 @@
     <plugin name="imu_controller" filename="libhector_gazebo_ros_imu.so">
       <robotNamespace>/</robotNamespace>
       <updateRate>50.0</updateRate>
-      <bodyName>imu_link</bodyName>
-      <topicName>imu</topicName>
+      <bodyName>base_link</bodyName>
+      <topicName>imu/data</topicName>
       <accelDrift>0.005 0.005 0.005</accelDrift>
       <accelGaussianNoise>0.005 0.005 0.005</accelGaussianNoise>
       <rateDrift>0.005 0.005 0.005 </rateDrift>
@@ -195,12 +162,12 @@
   <joint name="imu_joint" type="fixed">
     <axis xyz="1 0 0"/>
     <origin xyz="0 0 0.19"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <child link="imu_link"/>
   </joint>
 
   <!-- Create camera instance -->
-  <xacro:realsense-rs200 prefix="" parent="chassis">
+  <xacro:realsense-rs200 prefix="" parent="base_link">
     <origin xyz="0.285 0 .065" rpy="0 0 0" />
   </xacro:realsense-rs200>
 
@@ -210,19 +177,19 @@
   <xacro:property name="wheel_offset_z" value="0.0" />
 
   <!-- Add omni wheels to the robot -->
-  <xacro:omni_wheel prefix="front_right" parent="chassis" reflect="false">
+  <xacro:omni_wheel prefix="front_right" parent="base_link" reflect="false">
     <origin xyz="${wheel_offset_x} -${wheel_offset_y} ${wheel_offset_z}" rpy="0 0 0"/>
   </xacro:omni_wheel>
 
-  <xacro:omni_wheel prefix="front_left" parent="chassis" reflect="true">
+  <xacro:omni_wheel prefix="front_left" parent="base_link" reflect="true">
     <origin xyz="${wheel_offset_x} ${wheel_offset_y} ${wheel_offset_z}" rpy="0 0 0"/>
   </xacro:omni_wheel>
 
-  <xacro:omni_wheel prefix="back_left" parent="chassis" reflect="true">
+  <xacro:omni_wheel prefix="back_left" parent="base_link" reflect="true">
     <origin xyz="-${wheel_offset_x} ${wheel_offset_y} ${wheel_offset_z}" rpy="0 0 0"/>
   </xacro:omni_wheel>
 
-  <xacro:omni_wheel prefix="back_right" parent="chassis" reflect="false">
+  <xacro:omni_wheel prefix="back_right" parent="base_link" reflect="false">
     <origin xyz="-${wheel_offset_x} -${wheel_offset_y} ${wheel_offset_z}" rpy="0 0 0"/>
   </xacro:omni_wheel>
 
