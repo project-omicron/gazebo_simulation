@@ -25,12 +25,6 @@
     https://www.expo21xx.com/industrial-robots/20317_st3_mobile-robot-research/default.htm
   -->
 
-  <joint name="robot_footprint_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <parent link="robot_footprint"/>
-    <child link="chassis" />
-  </joint>
-
   <link name='chassis'>
     <pose>0 0 0.1 0 0 0</pose>
 
@@ -59,10 +53,10 @@
     </visual>
   </link>
 
-  <joint name="robot_footprint_joint2" type="fixed">
+  <joint name="robot_footprint_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <parent link="chassis"/>
-    <child link="chassis2" />
+    <parent link="chassis" />
+    <child link="robot_footprint"/>
   </joint>
 
   <link name='chassis2'>
@@ -77,7 +71,7 @@
     </inertial>
 
     <collision name='collision2'>
-      <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+      <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
         <box size=".135 .400 .110"/>
       </geometry>
@@ -90,6 +84,12 @@
       </geometry>
     </visual>
   </link>
+
+  <joint name="robot_footprint_joint2" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="chassis"/>
+    <child link="chassis2" />
+  </joint>
 
   <joint name="robot_lidar_platform_joint" type="fixed">
     <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
@@ -115,7 +115,7 @@
       </geometry>
     </collision>
 
-    <visual name='chassis2_visual'>
+    <visual>
       <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
       <geometry>
         <box size=".12 .10 .10"/>
@@ -178,13 +178,23 @@
         <box size="0.001 0.001 0.001"/>
       </geometry>
     </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <box size=".001 .001 .001"/>
-      </geometry>
-    </collision>
   </link>
+
+
+  <gazebo>
+    <plugin name="imu_controller" filename="libhector_gazebo_ros_imu.so">
+      <robotNamespace>/</robotNamespace>
+      <updateRate>50.0</updateRate>
+      <bodyName>chassis</bodyName>
+      <topicName>imu/data</topicName>
+      <accelDrift>0.005 0.005 0.005</accelDrift>
+      <accelGaussianNoise>0.005 0.005 0.005</accelGaussianNoise>
+      <rateDrift>0.005 0.005 0.005 </rateDrift>
+      <rateGaussianNoise>0.005 0.005 0.005 </rateGaussianNoise>
+      <headingDrift>0.005</headingDrift>
+      <headingGaussianNoise>0.005</headingGaussianNoise>
+    </plugin>
+  </gazebo>
 
   <joint name="imu_joint" type="fixed">
     <axis xyz="1 0 0"/>
