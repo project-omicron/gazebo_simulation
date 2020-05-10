@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <launch>
+  <!-- cartographer slam -->
+  <arg name="carto_mapping" default="0"/>
+  <arg name="carto_localization" default="0"/>
+  <arg name="load_state_filename" default=""/>
+
+
   <!-- Robot pose -->
   <arg name="x" default="0"/>
   <arg name="y" default="0"/>
@@ -31,6 +37,18 @@
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 
   <!--launch rviz-->
-  <node name="rviz" pkg="rviz" type="rviz" respawn="false"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find gazebo_simulation)/rviz/mapping.rviz"/>
+
+  <!-- slam -->
+  <group if="$(arg carto_mapping)">
+    <include file="$(find gazebo_simulation)/launch/carto_slam_online_mapping.launch"/>
+  </group>
+
+  <group if="$(arg carto_localization)">
+    <include file="$(find gazebo_simulation)/launch/carto_slam_online_localization.launch">
+      <arg name="load_state_filename" value="$(arg load_state_filename)"/>
+    </include>
+  </group>
+
 
 </launch>

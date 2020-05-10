@@ -16,6 +16,7 @@ sudo apt install ros-melodic-rviz
 sudo apt install ros-melodic-compressed-image-transport
 sudo apt install ros-melodic-theora-image-transport
 sudo apt install ros-melodic-camera-info-manager
+sudo apt install ros-melodic-hector-gazebo-plugins # for IMU sensor
 ```
 
 ## How to use
@@ -60,3 +61,35 @@ Open the new terminal window and run:
 cd ~/catkin_ws/ && source devel/setup.bash
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
+
+
+# SLAM
+
+## Cartographer
+
+Installing
+    
+    sudo apt install ros-melodic-cartographer-rviz ros-melodic-cartographer-ros-msgs ros-melodic-cartographer-ros ros-melodic-cartographer
+
+### How to run cartographer in online mode
+
+Running mapping:
+
+    roslaunch gazebo_simulation world_of_labyrinth.launch carto_mapping:=1
+    
+Move your robot around the map. When you are ready run
+
+    rosservice call /finish_trajectory 0
+    rosservice call /write_state ~/c1_map.bag.pbstream
+
+In case you are using a newer version of cartographer the later command should have different syntax.
+Refer to the docs for details.
+
+The map should be saved to the file. Now let's run localization for the robot:
+
+    roslaunch gazebo_simulation world_of_labyrinth.launch carto_localization:=1 load_state_filename:=`realpath ~/c1_map.bag.pbstream`
+    
+RViz should show the loaded map. The moving robot should be localized in the map.
+
+![cartographer online localization](doc/img/carto_localization.jpg)
+
