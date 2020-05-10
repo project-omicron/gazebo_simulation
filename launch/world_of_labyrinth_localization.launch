@@ -8,6 +8,7 @@
   <arg name="roll" default="0"/>
   <arg name="pitch" default="0"/>
   <arg name="yaw" default="0"/>
+  <arg name="load_state_filename"/>
 
   <!-- Launch other relevant files-->
   <include file="$(find gazebo_simulation)/launch/robot_description.launch"/>
@@ -36,7 +37,8 @@
     <node name="cartographer_node" pkg="cartographer_ros"
        type="cartographer_node" args="
       -configuration_directory $(find gazebo_simulation)/config
-      -configuration_basename my_husky_2d_gazebo.lua"
+      -configuration_basename my_husky_2d_gazebo_localization.lua
+      -load_state_filename $(arg load_state_filename)"
        output="screen">
           <remap from="imu" to="imu/data" />
           <remap from="odom" to="odometry/filtered" />
